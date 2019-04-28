@@ -1,0 +1,5 @@
+syntax = "proto3";
+message AMessage {
+  int32 id = 1;
+  string message = 2;
+}
