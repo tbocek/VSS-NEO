@@ -16,8 +16,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	b := make([]byte, 1000)
-	n, _ := conn.Read(b)
-	fmt.Printf("connecting... read: %d, addr: %v, data: [% x], decoded: %v\n",
-		n, conn.RemoteAddr(), b[:n], string(b[1:]))
+	for {
+		b := make([]byte, 1000)
+		n, err := conn.Read(b)
+		if err != nil {
+			return
+		}
+		if n > 0 {
+			fmt.Printf("connecting... read: %d, addr: %v, data: [% x], decoded: %v\n",
+				n, conn.RemoteAddr(), b[:n], string(b[1:]))
+		}
+	}
 }

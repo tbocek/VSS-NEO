@@ -24,7 +24,6 @@ func main() {
 	n, _ := conn.Read(binary)
 
 	m := &pb.AMessage{}
-
 	if err := proto.Unmarshal(binary[:n], m); err != nil {
 		panic(err)
 	}
