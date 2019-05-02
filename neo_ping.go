@@ -133,7 +133,7 @@ func encodeHeader(cmd string, payload []byte) []byte {
 
 func encodeVersion(userAgent string) []byte {
 	userAgentLen := len(userAgent)
-	b := make([]byte, 27+userAgentLen+1)
+	b := make([]byte, 28+userAgentLen)
 	//version
 	binary.LittleEndian.PutUint32(b[0:], 0)
 	//service
